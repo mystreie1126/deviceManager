@@ -16,6 +16,7 @@ var app = new Vue({
       device_model:'',
       imei:'',
       storage:'',
+      color:''
     },
     main:{
       wifi:'',
@@ -38,6 +39,7 @@ var app = new Vue({
       simTray:'',
       lcd:'',
       touchScreen:'',
+      touchID:'',
       earphone:'',
       microphone:'',
       charging:'',
@@ -65,7 +67,7 @@ var app = new Vue({
       this.aa ++;
 
       if(this.power == false){
-         
+
          for(var prop in this.main){
            if(this.main.hasOwnProperty(prop)){
              this.main[prop] = 0;
