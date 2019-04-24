@@ -49,6 +49,10 @@
             <option value="1">128GB</option>
             <option value="3">64GB</option>
             <option value="3">32GB</option>
+            <option value="3">16GB</option>
+            <option value="3">8GB</option>
+            <option value="3">4GB</option>
+            <option value="3">2GB</option>
           </select>
           <label>Select Storage</label>
         </div>
@@ -326,10 +330,10 @@
     <div class="turn_on bold" :style="[main.earphone == true ? {color:'green'}:{color:'red'}]">Earphone:</div>
     <div class="switch">
       <label>
-        Off
+        No
         <input type="checkbox" v-model="main.earphone" :disabled="isDisabled">
         <span class="lever"></span>
-        On
+        Yes
       </label>
     </div>
   </div>
@@ -338,10 +342,10 @@
     <div class="turn_on bold" :style="[main.microphone == true ? {color:'green'}:{color:'red'}]">Microphone:</div>
     <div class="switch">
       <label>
-        Off
+        No
         <input type="checkbox" v-model="main.microphone" :disabled="isDisabled">
         <span class="lever"></span>
-        On
+        Yes
       </label>
     </div>
   </div>
@@ -350,10 +354,10 @@
     <div class="turn_on bold" :style="[main.charging == true ? {color:'green'}:{color:'red'}]">Device Charging:</div>
     <div class="switch">
       <label>
-        Off
+        No
         <input type="checkbox" v-model="main.charging" :disabled="isDisabled">
         <span class="lever"></span>
-        On
+        Yes
       </label>
     </div>
   </div>
@@ -362,10 +366,10 @@
     <div class="turn_on bold" :style="[main.homeButton == true ? {color:'green'}:{color:'red'}]">Home Button:</div>
     <div class="switch">
       <label>
-        Off
+        No
         <input type="checkbox" v-model="main.homeButton" :disabled="isDisabled">
         <span class="lever"></span>
-        On
+        Yes
       </label>
     </div>
   </div>
@@ -374,10 +378,10 @@
     <div class="turn_on bold" :style="[main.loudSpeaker == true ? {color:'green'}:{color:'red'}]">Loud Speaker:</div>
     <div class="switch">
       <label>
-        Off
+        No
         <input type="checkbox" v-model="main.loudSpeaker" :disabled="isDisabled">
         <span class="lever"></span>
-        On
+        Yes
       </label>
     </div>
   </div>
@@ -417,10 +421,10 @@
     <div class="turn_on bold" :style="[main.innerDust == true ? {color:'green'}:{color:'red'}]">Clean inner dust:</div>
     <div class="switch">
       <label>
-        Bad
+        No
         <input type="checkbox" v-model="main.innerDust" :disabled="isDisabled">
         <span class="lever"></span>
-        Good
+        Yes
       </label>
     </div>
   </div>
@@ -429,10 +433,10 @@
     <div class="turn_on bold" :style="[main.turnOffDevice == true ? {color:'green'}:{color:'red'}]">Turn Off the Device:</div>
     <div class="switch">
       <label>
-        Bad
+        No
         <input type="checkbox" v-model="main.turnOffDevice" :disabled="isDisabled">
         <span class="lever"></span>
-        Good
+        Yes
       </label>
     </div>
   </div>
@@ -441,10 +445,10 @@
     <div class="turn_on bold" :style="[main.updateLatest == true ? {color:'green'}:{color:'red'}]">Update to the latest Version:</div>
     <div class="switch">
       <label>
-        Bad
+        No
         <input type="checkbox" v-model="main.updateLatest" :disabled="isDisabled">
         <span class="lever"></span>
-        Good
+        Yes
       </label>
     </div>
   </div>
@@ -453,10 +457,10 @@
     <div class="turn_on bold" :style="[main.warrantySticker == true ? {color:'green'}:{color:'red'}]">Funtech Warrantly Sticker on Screen Connectior Panel and Battery:</div>
     <div class="switch">
       <label>
-        Bad
+        No
         <input type="checkbox" v-model="main.warrantySticker" :disabled="isDisabled">
         <span class="lever"></span>
-        Good
+        Yes
       </label>
     </div>
   </div>
