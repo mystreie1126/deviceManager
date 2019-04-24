@@ -50,7 +50,6 @@ var app = new Vue({
       updateLatest:'',
       warrantySticker:''
     },
-    aa:''
   },
 
   computed:{
@@ -64,9 +63,9 @@ var app = new Vue({
   methods:{
     test:function(){
       this.aa ++;
-     
-      if(this.power == false){
 
+      if(this.power == false){
+         
          for(var prop in this.main){
            if(this.main.hasOwnProperty(prop)){
              this.main[prop] = 0;

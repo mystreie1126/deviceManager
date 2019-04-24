@@ -12,30 +12,22 @@
 
 
   <div class="first-line device_details_line row">
-    <h5 class="indigo-text">Basic information</h5>
+    <h5 class="indigo-text col s6">Basic information</h5>
+    <h5 class="col s6 indigo-text">Created By:<span class="red-text">{{Auth::User()->name}}</span></h5>
           <div class="switch col s6">
-            <div class="turn_on">Power on:</div>
+            <div class="turn_on">Power:</div>
              <label>
-               No
+               OFF
                <input type="checkbox" v-model="power" @change="test" >
                <span class="lever"></span>
-               Yes
+               On
              </label>
          </div>
 
-         <div class="switch">
-           <label>
-             Off
-             <input type="checkbox" :disabled="isDisabled">
-             <span class="lever"></span>
-             On
-           </label>
-         </div>
 
          <div class="input-field col s6">
              <input placeholder="Device Order ID" id="device_orderID" type="number" class="validate" v-model="basic.order_id">
              <label for="device_orderID">Order ID</label>
-             @{{aa}}
          </div>
 
 
@@ -51,8 +43,7 @@
           </div>
 
         <div class="input-field col s4">
-          <h3>some shit</h3>
-          <select :disabled='isDisabled' class="device_status" v-model="basic.storage">
+          <select  class="device_status" v-model="basic.storage">
             <option value="" disabled selected>Storage</option>
             <option value="1">256GB</option>
             <option value="1">128GB</option>
@@ -68,302 +59,411 @@
     {{-- second row ... --}}
 <div class="second-line device_details_line row">
    <h5 class="indigo-text">Front and back Top</h5>
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.wifi">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
 
-        <label>Wifi</label>
+   <div class="col s3" :style="[main.wifi === ''?{background:'#e0fff6'}:{background:'none'}]">
+     <div class="turn_on bold" :style="[main.wifi == true ? {color:'green'}:{color:'red'}]">WIFI:</div>
+     <div class="switch">
+       <label>
+         Off
+         <input type="checkbox" v-model="main.wifi" :disabled="isDisabled">
+         <span class="lever"></span>
+         On
+       </label>
+     </div>
+   </div>
+
+    <div class="col s3" :style="[main.frontCamera === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.frontCamera == true ? {color:'green'}:{color:'red'}]">Front Camera:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.frontCamera" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.frontCamera">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Front Camera</label>
+
+    <div class="col s3" :style="[main.proximity === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.proximity == true ? {color:'green'}:{color:'red'}]">Proximity:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.proximity" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.proximity">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Proximity</label>
+    <div class="col s3" :style="[main.cameraFlash === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.cameraFlash == true ? {color:'green'}:{color:'red'}]">Camera Flash:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.cameraFlash" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.cameraFlash">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Camera Flash</label>
+    <div class="col s3" :style="[main.rearCamera === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.rearCamera == true ? {color:'green'}:{color:'red'}]">Rear Camera:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.rearCamera" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.rearCamera">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Rear Camera</label>
+    <div class="col s3" :style="[main.earSpeaker === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.earSpeaker == true ? {color:'green'}:{color:'red'}]">Ear Speaker:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.earSpeaker" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.earSpeaker">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Ear Speaker</label>
-    </div>
+
 </div>
 
       {{-- third row ... --}}
 <div class="third-line device_details_line row">
    <h5 class="indigo-text">Left Side</h5>
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.vibration">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Vibration</label>
+
+    <div class="col s3" :style="[main.vibration === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.vibration == true ? {color:'green'}:{color:'red'}]">Vibration:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.vibration" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.muteButton">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Mute Button</label>
+    <div class="col s3" :style="[main.muteButton === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.muteButton == true ? {color:'green'}:{color:'red'}]">Mute Button:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.muteButton" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.volumeButton">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Volume Button</label>
+    <div class="col s3" :style="[main.volumeButton === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.volumeButton == true ? {color:'green'}:{color:'red'}]">Volume Button:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.volumeButton" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.gps">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>GPS</label>
+    <div class="col s3" :style="[main.gps === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.gps == true ? {color:'green'}:{color:'red'}]">GPS:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.gps" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.bluetooth">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Bluetooth</label>
+    <div class="col s3" :style="[main.bluetooth === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.bluetooth == true ? {color:'green'}:{color:'red'}]">Bluetooth:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.bluetooth" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.magnetometer">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Magnetometer</label>
+
+    <div class="col s3" :style="[main.magnetometer === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.magnetometer == true ? {color:'green'}:{color:'red'}]">Magnetometer:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.magnetometer" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.accelerometer">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Accelerometer</label>
+
+    <div class="col s3" :style="[main.accelerometer === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.accelerometer == true ? {color:'green'}:{color:'red'}]">Accelerometer:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.accelerometer" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.call">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Call</label>
+
+    <div class="col s3" :style="[main.call === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.call == true ? {color:'green'}:{color:'red'}]">Call:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.call" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
 
-    <div class="input-field col s3">
-      <select :disabled="isDisabled" class="device_status" v-model="main.appearance">
-        <option value="" disabled selected> Status</option>
-        <option value="0">Working</option>
-        <option value="1">Not Working</option>
-      </select>
-        <label>Appearance</label>
+    <div class="col s3" :style="[main.appearance === ''?{background:'#e0fff6'}:{background:'none'}]">
+      <div class="turn_on bold" :style="[main.appearance == true ? {color:'green'}:{color:'red'}]">Appearance:</div>
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox" v-model="main.appearance" :disabled="isDisabled">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
     </div>
+
 </div>
 
 <div class="forth-line device_details_line row">
    <h5 class="indigo-text">Right Side</h5>
-   <div class="input-field col s3">
-     <select :disabled="isDisabled" class="device_status" v-model="main.earSpeaker">
-       <option value="" disabled selected> Status</option>
-       <option value="0">Working</option>
-       <option value="1">Not Working</option>
-     </select>
-       <label>Ear Speaker</label>
+   <div class="col s3" :style="[main.earSpeaker === ''?{background:'#e0fff6'}:{background:'none'}]">
+     <div class="turn_on bold" :style="[main.earSpeaker == true ? {color:'green'}:{color:'red'}]">Ear Speaker:</div>
+     <div class="switch">
+       <label>
+         Off
+         <input type="checkbox" v-model="main.earSpeaker" :disabled="isDisabled">
+         <span class="lever"></span>
+         On
+       </label>
+     </div>
    </div>
 
-   <div class="input-field col s3">
-     <select :disabled="isDisabled" class="device_status" v-model="main.powerButton">
-       <option value="" disabled selected> Status</option>
-       <option value="0">Working</option>
-       <option value="1">Not Working</option>
-     </select>
-       <label>Power Button</label>
+   <div class="col s3" :style="[main.powerButton === ''?{background:'#e0fff6'}:{background:'none'}]">
+     <div class="turn_on bold" :style="[main.powerButton == true ? {color:'green'}:{color:'red'}]">Power Button:</div>
+     <div class="switch">
+       <label>
+         Off
+         <input type="checkbox" v-model="main.powerButton" :disabled="isDisabled">
+         <span class="lever"></span>
+         On
+       </label>
+     </div>
    </div>
 
-   <div class="input-field col s3">
-     <select :disabled="isDisabled" class="device_status" v-model="main.simTray">
-       <option value="" disabled selected> Status</option>
-       <option value="0">Working</option>
-       <option value="1">Not Working</option>
-     </select>
-       <label>SIM Tray</label>
+   <div class="col s3" :style="[main.simTray === ''?{background:'#e0fff6'}:{background:'none'}]">
+     <div class="turn_on bold" :style="[main.simTray == true ? {color:'green'}:{color:'red'}]">SIM Tray:</div>
+     <div class="switch">
+       <label>
+         Off
+         <input type="checkbox" v-model="main.simTray" :disabled="isDisabled">
+         <span class="lever"></span>
+         On
+       </label>
+     </div>
    </div>
 
-   <div class="input-field col s3">
-     <select :disabled="isDisabled" class="device_status" v-model="main.lcd">
-       <option value="" disabled selected> Status</option>
-       <option value="0">Working</option>
-       <option value="1">Not Working</option>
-     </select>
-       <label>LCD</label>
+
+   <div class="col s3" :style="[main.lcd === ''?{background:'#e0fff6'}:{background:'none'}]">
+     <div class="turn_on bold" :style="[main.lcd == true ? {color:'green'}:{color:'red'}]">LCD:</div>
+     <div class="switch">
+       <label>
+         Off
+         <input type="checkbox" v-model="main.lcd" :disabled="isDisabled">
+         <span class="lever"></span>
+         On
+       </label>
+     </div>
    </div>
 
-   <div class="input-field col s3">
-     <select :disabled="isDisabled" class="device_status" v-model="main.touchScreen">
-       <option value="" disabled selected> Status</option>
-       <option value="0">Working</option>
-       <option value="1">Not Working</option>
-     </select>
-       <label>TouchScreen</label>
+   <div class="col s3" :style="[main.touchScreen === ''?{background:'#e0fff6'}:{background:'none'}]">
+     <div class="turn_on bold" :style="[main.touchScreen == true ? {color:'green'}:{color:'red'}]">TouchScreen:</div>
+     <div class="switch">
+       <label>
+         Off
+         <input type="checkbox" v-model="main.touchScreen" :disabled="isDisabled">
+         <span class="lever"></span>
+         On
+       </label>
+     </div>
    </div>
+
 </div>
 
 <div class="fifth-line device_details_line row">
   <h5 class="indigo-text">Bottom</h5>
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.earphone">
-      <option value="" disabled selected> Status</option>
-      <option value="0">Working</option>
-      <option value="1">Not Working</option>
-    </select>
-      <label>Earphone</label>
+
+  <div class="col s3" :style="[main.earphone === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.earphone == true ? {color:'green'}:{color:'red'}]">Earphone:</div>
+    <div class="switch">
+      <label>
+        Off
+        <input type="checkbox" v-model="main.earphone" :disabled="isDisabled">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
   </div>
 
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.microphone">
-      <option value="" disabled selected> Status</option>
-      <option value="0">Working</option>
-      <option value="1">Not Working</option>
-    </select>
-      <label>Microphone</label>
+  <div class="col s3" :style="[main.microphone === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.microphone == true ? {color:'green'}:{color:'red'}]">Microphone:</div>
+    <div class="switch">
+      <label>
+        Off
+        <input type="checkbox" v-model="main.microphone" :disabled="isDisabled">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
   </div>
 
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.charging">
-      <option value="" disabled selected> Status</option>
-      <option value="0">Working</option>
-      <option value="1">Not Working</option>
-    </select>
-      <label>Device Charging</label>
+  <div class="col s3" :style="[main.charging === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.charging == true ? {color:'green'}:{color:'red'}]">Device Charging:</div>
+    <div class="switch">
+      <label>
+        Off
+        <input type="checkbox" v-model="main.charging" :disabled="isDisabled">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
   </div>
 
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.homeButton">
-      <option value="" disabled selected> Status</option>
-      <option value="0">Working</option>
-      <option value="1">Not Working</option>
-    </select>
-      <label>Home Button</label>
+  <div class="col s3" :style="[main.homeButton === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.homeButton == true ? {color:'green'}:{color:'red'}]">Home Button:</div>
+    <div class="switch">
+      <label>
+        Off
+        <input type="checkbox" v-model="main.homeButton" :disabled="isDisabled">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
   </div>
 
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.loudSpeaker">
-      <option value="" disabled selected> Status</option>
-      <option value="0">Working</option>
-      <option value="1">Not Working</option>
-    </select>
-      <label>Loud Speaker</label>
+  <div class="col s3" :style="[main.loudSpeaker === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.loudSpeaker == true ? {color:'green'}:{color:'red'}]">Loud Speaker:</div>
+    <div class="switch">
+      <label>
+        Off
+        <input type="checkbox" v-model="main.loudSpeaker" :disabled="isDisabled">
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
   </div>
+
 
 </div>
 
 <div class="sixth-line device_details_line row">
   <h5 class="green-text">Others</h5>
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.chargeBattery">
-      <option value="" disabled selected>Status</option>
-      <option value="0">Tested</option>
-      <option value="1">Not yet</option>
-    </select>
-      <label>Charge Battery to 100%</label>
+
+  <div class="col s3" :style="[main.chargeBattery === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.chargeBattery == true ? {color:'green'}:{color:'red'}]">Charge Battery to 100%:</div>
+    <div class="switch">
+      <label>
+        Bad
+        <input type="checkbox" v-model="main.chargeBattery" :disabled="isDisabled">
+        <span class="lever"></span>
+        Good
+      </label>
+    </div>
   </div>
 
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.batteryLife">
-      <option value="" disabled selected>Status</option>
-      <option value="0">Tested</option>
-      <option value="1">Not yet</option>
-    </select>
-      <label>Battery life test</label>
+  <div class="col s3" :style="[main.batteryLife === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.batteryLife == true ? {color:'green'}:{color:'red'}]">Battery life test:</div>
+    <div class="switch">
+      <label>
+        Bad
+        <input type="checkbox" v-model="main.batteryLife" :disabled="isDisabled">
+        <span class="lever"></span>
+        Good
+      </label>
+    </div>
   </div>
 
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.innerDust">
-      <option value="" disabled selected>Status</option>
-      <option value="0">Tested</option>
-      <option value="1">Not yet</option>
-    </select>
-      <label>Clean inner dust</label>
+
+  <div class="col s3" :style="[main.innerDust === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.innerDust == true ? {color:'green'}:{color:'red'}]">Clean inner dust:</div>
+    <div class="switch">
+      <label>
+        Bad
+        <input type="checkbox" v-model="main.innerDust" :disabled="isDisabled">
+        <span class="lever"></span>
+        Good
+      </label>
+    </div>
   </div>
 
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.turnOffDevice">
-      <option value="" disabled selected>Status</option>
-      <option value="0">Tested</option>
-      <option value="1">Not yet</option>
-    </select>
-      <label>Turn Off the Device</label>
+  <div class="col s3" :style="[main.turnOffDevice === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.turnOffDevice == true ? {color:'green'}:{color:'red'}]">Turn Off the Device:</div>
+    <div class="switch">
+      <label>
+        Bad
+        <input type="checkbox" v-model="main.turnOffDevice" :disabled="isDisabled">
+        <span class="lever"></span>
+        Good
+      </label>
+    </div>
   </div>
 
-  <div class="input-field col s3">
-    <select :disabled="isDisabled" class="device_status" v-model="main.updateLatest">
-      <option value="" disabled selected>Status</option>
-      <option value="0" class="green-text">Tested</option>
-      <option value="1">Not yet</option>
-    </select>
-      <label>Update to the latest Version</label>
+  <div class="col s3" :style="[main.updateLatest === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.updateLatest == true ? {color:'green'}:{color:'red'}]">Update to the latest Version:</div>
+    <div class="switch">
+      <label>
+        Bad
+        <input type="checkbox" v-model="main.updateLatest" :disabled="isDisabled">
+        <span class="lever"></span>
+        Good
+      </label>
+    </div>
   </div>
 
-  <div class="input-field col s9">
-    <select :disabled="isDisabled" class="device_status" v-model="main.warrantySticker">
-      <option value="" disabled selected class="red-text">Status</option>
-      <option value="0">Tested</option>
-      <option value="1">Not yet</option>
-    </select>
-      <label>Funtech Warrantly Sticker on Screen Connectior Panel and Battery</label>
+  <div class="col s9" :style="[main.warrantySticker === ''?{background:'#e0fff6'}:{background:'none'}]">
+    <div class="turn_on bold" :style="[main.warrantySticker == true ? {color:'green'}:{color:'red'}]">Funtech Warrantly Sticker on Screen Connectior Panel and Battery:</div>
+    <div class="switch">
+      <label>
+        Bad
+        <input type="checkbox" v-model="main.warrantySticker" :disabled="isDisabled">
+        <span class="lever"></span>
+        Good
+      </label>
+    </div>
   </div>
 
 </div>
+<button type="button" class="btn-large">Submit</button>
+
 </form>
 @endif
 
